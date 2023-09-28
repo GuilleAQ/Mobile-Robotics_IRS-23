@@ -131,3 +131,12 @@ So, if they are not "useful" in this case, why implement them? The answer is sim
 
 - So as not to make active waits and lose reactivity.
 - To make the code scalable, i.e., if the obstacle detection was done with the laser, it would be able to sense reverse and it would be useful. Or if the turn was not on itself, but advanced at the same time as it turns, it could also sense the turn time.
+
+#### Video Demo
+
+Three minutes of fast-motion simulation
+
+
+
+
+
