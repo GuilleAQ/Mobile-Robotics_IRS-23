@@ -27,10 +27,10 @@ def go_state(new_state):
     current_state = new_state
 
 def forward2backward():
-    detected_ = False
+    detected = False
 
     if HAL.getBumperData().state == CRASH:
-        detected_ = True
+        detected = True
         crash_side = HAL.getBumperData().bumper
 
         if crash_side == LEFT:
@@ -42,7 +42,7 @@ def forward2backward():
         elif crash_side == RIGHT:
             turn_side = -1
 
-    return detected_
+    return detected
 
 def backward2turn():
     if rospy.get_time() - now_time >= BACKING_TIME:
