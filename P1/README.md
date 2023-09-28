@@ -51,9 +51,7 @@ It is the first day that I work in practice so it occurs to me to make a code in
 <img width=600px src="https://github.com/GuilleAQ/Mobile-Robotics_IRS-23/blob/main/P1/resources/figures/3states_FSM_Bumper.png" alt="explode"></a> 
 </div>
 
-#### Code
-
-##### 3 FSM code
+#### 3 FSM code
 
 ```python
 while True:
@@ -86,11 +84,11 @@ As I said, the FSM is simple but I could consider the three states sufficient.
 
 I have used three functions that return booleans, which check whether to transition to the next state; more about them later.
 
-##### go_state() code
+#### go_state() code
 
 The function *go_state()* receives as parameter the state to transit to and modifies the global variable *current_state*.
 
-##### forward2backward() code
+#### forward2backward() code
 
 Detects if the robot has crashed and on which side, in which case it would return true.
 
@@ -114,7 +112,7 @@ def forward2backward():
     return detected
 ```
 
-##### backward2turn() & turn2forward() code
+#### backward2turn() & turn2forward() code
 
 The diference between *backward2turn()* and *turn2forward()* is the constants *BACKING_TIME* and *TURNING_TIME*
 
