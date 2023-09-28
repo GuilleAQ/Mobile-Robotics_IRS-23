@@ -1,7 +1,7 @@
 # Basic Vacuum Cleaner
 
 <div align="center">
-<img width=600px src="[https://github.com/GuilleAQ/Mobile-Robotics_IRS-23/resources/figures/Basic_Vacuum_cleaner.png](https://github.com/GuilleAQ/Mobile-Robotics_IRS-23/blob/main/P1/resources/figures/Basic_Vacuum_cleaner.png)" alt="explode"></a> 
+<img width=600px src="https://github.com/GuilleAQ/Mobile-Robotics_IRS-23/blob/main/P1/resources/figures/Basic_Vacuum_cleaner.png" alt="explode"></a> 
 </div>
 
 <h3 align="center"> Basic Vacuum Cleaner </h3>
@@ -48,7 +48,7 @@ It is the first day that I work in practice so it occurs to me to make a code in
 
 #### 3 FSM diagram
 <div align="center">
-<img width=600px src="[https://github.com/GuilleAQ/Mobile-Robotics_IRS-23/blob/main/P1/resources/figures/3states_FSM_Bumper.png)" alt="explode"></a> 
+<img width=600px src="https://github.com/GuilleAQ/Mobile-Robotics_IRS-23/blob/main/P1/resources/figures/3states_FSM_Bumper.png" alt="explode"></a> 
 </div>
 
 #### Code
