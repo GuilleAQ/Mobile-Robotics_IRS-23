@@ -1,7 +1,7 @@
 # Visual Follow Line
 
 <div align="center">
-<img width=600px src="" alt="explode"></a> 
+<img width=600px src="https://github.com/GuilleAQ/Mobile-Robotics_IRS-23/blob/main/P2/resources/figures/fline.png" alt="explode"></a> 
 </div>
 
 <h3 align="center"> Visual Follow Line </h3>
@@ -15,7 +15,6 @@
 ## Table of Contents
 - [Table of Contents](#table-of-contents)
 - [Task description](#Task-description)
-- [First approach](#First-approach)
 - [Perception](#Perception)
 - [Actuation](#Actuation)
 
@@ -29,9 +28,6 @@ The goal of this exercise is to perform a PID reactive control capable of follow
 - HAL.setV() - to set the linear speed
 - HAL.setW() - to set the angular velocity
 - GUI.showImage() - allows you to view a debug image or with relevant information
-
-## First approach
-
 
 ## Perception
 ### DAY 1
@@ -122,6 +118,22 @@ def is_curve(contour):
     else:
         return False
 ```
+
+### perception process
+
+<div align="center">
+<img width=600px src="https://github.com/GuilleAQ/Mobile-Robotics_IRS-23/blob/main/P2/resources/figures/1.png" alt="explode"></a> 
+</div>
+
+<div align="center">
+<img width=600px src="https://github.com/GuilleAQ/Mobile-Robotics_IRS-23/blob/main/P2/resources/figures/2.png" alt="explode"></a> 
+</div>
+
+<div align="center">
+<img width=600px src="https://github.com/GuilleAQ/Mobile-Robotics_IRS-23/blob/main/P2/resources/figures/3.png" alt="explode"></a> 
+</div>
+
+
 ## Actuation
 ### DAY 4
 Implementing a function that acts as a PID controller and another one that adjusts the linear speed according to the angular speed and some maximums and minimums, I consider that it is enough to control the robot.
