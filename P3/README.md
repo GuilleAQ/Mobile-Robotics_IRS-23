@@ -97,7 +97,7 @@ while True:
 ```
 
 ## Situations
-### Obstacle between objective and goal
+### Obstacle between robot and target
 As we can see in the following image, the vector pointing to the target (green) added to the repulsion vector (red), generates a result vector (black) which, multiplied by *alpha* and *beta* scalars, describes the movement indicated to avoid the obstacle and at the same time approach the target.
 <div align="center">
 <img width=600px src="https://github.com/GuilleAQ/Mobile-Robotics_IRS-23/blob/main/P3/resources/figures/3.png" alt="explode"></a> 
@@ -120,4 +120,4 @@ W = np.clip(avg_force[1], -2.5, 2.5)
 ## Video demo
 The way I have chosen the *alpha* and *beta* scalars, the robot is very "daring", that is, it is not afraid of obstacles, so it goes at a high speed and we see that it completes the circuit in **less than 100 seconds**.
 
-[video demo]([https://urjc-my.sharepoint.com///_layouts/15/streamcumen=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview](https://urjc-my.sharepoint.com/personal/g_alcocer_2020_alumnos_urjc_es/_layouts/15/stream.aspx?id=%2Fpersonal%2Fg%5Falcocer%5F2020%5Falumnos%5Furjc%5Fes%2FDocuments%2Fobs%5Favoidance%2Emp4&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview)https://urjc-my.sharepoint.com/personal/g_alcocer_2020_alumnos_urjc_es/_layouts/15/stream.aspx?id=%2Fpersonal%2Fg%5Falcocer%5F2020%5Falumnos%5Furjc%5Fes%2FDocuments%2Fobs%5Favoidance%2Emp4&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview)
+[video demo](https://urjc-my.sharepoint.com/personal/g_alcocer_2020_alumnos_urjc_es/_layouts/15/stream.aspx?id=%2Fpersonal%2Fg%5Falcocer%5F2020%5Falumnos%5Furjc%5Fes%2FDocuments%2Fobs%5Favoidance%2Emp4&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview)
