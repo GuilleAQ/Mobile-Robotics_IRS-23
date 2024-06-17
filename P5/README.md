@@ -52,6 +52,87 @@ The Monte Carlo Localization algorithm consists of the following steps:
 - **Motion Model**: Predicts the next state of each particle based on the robot's movements.
 - **Sensor Model**: Updates the weights of particles based on the similarity between predicted and actual sensor readings.
 
+### Functions
+
+#### calculate_similarity
+The `calculate_similarity` function calculates the similarity between the real and virtual laser data. It converts both data sets to NumPy arrays, samples every 15 data points, calculates the distances, and returns a similarity score based on these distances.
+
+```python
+    # Convert to NumPy arrays and ensure they are the same size
+    real_data = np.array(real_data)
+    virtual_data = np.array(virtual_data)
+    
+    # Use the minimum size to avoid out-of-range indices
+    min_len = min(len(real_data), len(virtual_data))
+    real_data = real_data[:min_len]
+    virtual_data = virtual_data[:min_len]
+    
+    # Sample every 15 data points
+    real_sampled = real_data[::15, :2]
+    virtual_sampled = virtual_data[::15, :2]
+    
+    # Calculate distances and similarity
+    distances = np.linalg.norm(real_sampled - virtual_sampled, axis=1)
+    similarity = np.sum(np.exp(-distances))
+    
+    return similarity
+```
+
+#### process_group
+The `process_group` function processes a group of particles and calculates their similarity to the robot's laser data. It returns the group probabilities, the highest probability, and the best particle.
+```python
+for particle in group_particles:
+        # Set the particle's pose in the HAL object
+        hal_object.pose = particle
+        # Get the laser data for the particle's pose
+        particle_world_laser_data = hal_object.getLaserData()
+        
+        # Calculate the similarity between the robot's and the particle's laser data
+        similarity = calculate_similarity(robot_laser_data, particle_world_laser_data)
+        group_probabilities.append(similarity)
+
+        # Update the local best particle if this one has higher similarity
+        if similarity > local_max_prob:
+            local_max_prob = similarity
+            local_best_particle = particle
+
+    return group_probabilities, local_max_prob, local_best_particle
+```
+
+#### generate_new_particles
+The `generate_new_particles` function generates new particles around the best particles using a multivariate normal distribution with reduced covariance to ensure less dispersion.
+
+```python
+for best_particle in best_particles:
+        # Use x, y coordinates of the best particle
+        mean = best_particle[:2]
+        # Reduced covariance for less dispersion
+        covariance_matrix = np.array([[0.05, 0], [0, 0.05]])
+        new_positions = np.random.multivariate_normal(mean, 
+                            covariance_matrix, num_particles_to_generate)
+        
+        for position in new_positions:
+            # Reduced angle noise
+            new_angle = best_particle[2] + np.random.normal(0.0, 0.01)
+            # Ensure the angle is in the range [0, 2*pi]
+            new_angle = np.mod(new_angle, 2 * np.pi)
+            new_particle = np.array([position[0], position[1], new_angle])
+            new_particles.append(new_particle)
+    
+    return new_particles
+```
+
+#### main loop
+The main loop handles the propagation of particles, laser data processing, and particle resampling. It uses multiprocessing to process particle groups in parallel and updates the particle set based on their probabilities.
+
+With the following if, my intention is to skip the initial iterations of the loop to allow the GUI to load and observe how the particles have been initialized. Otherwise, we would see them in the same position, close to or within the robot during the advanced execution.
+```python
+# counter and min_prob to let loop pass 2 laps to see initial particles
+    if counter >= 3:
+        min_prob = 1 / N_PARTICLES
+```
+
+
 ## Setup and Installation
 To set up the project, follow these steps:
 1. Clone the repository:
